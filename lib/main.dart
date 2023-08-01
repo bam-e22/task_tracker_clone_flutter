@@ -3,8 +3,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:task_tracker_clone/constants/colors.dart';
 import 'package:task_tracker_clone/constants/gaps.dart';
 import 'package:task_tracker_clone/constants/sizes.dart';
+import 'package:task_tracker_clone/data/task.dart';
 import 'package:task_tracker_clone/ui/avatar.dart';
 import 'package:task_tracker_clone/ui/days.dart';
+import 'package:task_tracker_clone/ui/task_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +31,9 @@ class MyApp extends StatelessWidget {
 }
 
 class TaskTrackerApp extends StatelessWidget {
-  const TaskTrackerApp({super.key});
+  const TaskTrackerApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +61,30 @@ class TaskTrackerApp extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(
+          const Padding(
+            padding: EdgeInsets.only(
               top: Sizes.size32,
               left: Sizes.size20,
             ),
             child: Days(),
           ),
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Sizes.size10,
+                vertical: Sizes.size20,
+              ),
+              itemCount: tasks.length,
+              separatorBuilder: (context, index) => Gaps.v10,
+              itemBuilder: (context, index) {
+                return TaskCard(
+                  title: tasks[index].title,
+                  names: tasks[index].person,
+                  color: tasks[index].color,
+                );
+              },
+            ),
+          )
         ],
       ),
     );
