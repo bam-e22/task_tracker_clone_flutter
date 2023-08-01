@@ -19,11 +19,12 @@ class Avatar extends StatelessWidget {
           width: radius.toDouble() * 2,
           height: radius.toDouble() * 2,
           decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: imageProvider,
-                fit: BoxFit.cover,
-              )),
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: imageProvider,
+              fit: BoxFit.cover,
+            ),
+          ),
         );
       },
     );
