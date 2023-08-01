@@ -4,6 +4,7 @@ import 'package:task_tracker_clone/constants/colors.dart';
 import 'package:task_tracker_clone/constants/gaps.dart';
 import 'package:task_tracker_clone/constants/sizes.dart';
 import 'package:task_tracker_clone/ui/avatar.dart';
+import 'package:task_tracker_clone/ui/days.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           useMaterial3: true,
-          scaffoldBackgroundColor: eerieBlack,
+          scaffoldBackgroundColor: MyColors.eerieBlack,
           appBarTheme: const AppBarTheme(
-            backgroundColor: eerieBlack,
+            backgroundColor: MyColors.eerieBlack,
           )),
       home: const TaskTrackerApp(),
     );
@@ -54,16 +55,14 @@ class TaskTrackerApp extends StatelessWidget {
           Gaps.h8
         ],
       ),
-      body: const Column(
+      body: Column(
         children: [
-          Avatar(
-            radius: 25,
-          ),
-          Avatar(
-            radius: 45,
-          ),
-          Avatar(
-            radius: 65,
+          Padding(
+            padding: const EdgeInsets.only(
+              top: Sizes.size32,
+              left: Sizes.size20,
+            ),
+            child: Days(),
           ),
         ],
       ),
